@@ -22,14 +22,9 @@ class HomeViewModel extends ChangeNotifier{
   
   int get selectedIndex =>_selectedIndex;
 
-  void changeHomeStatus(HomeStatus status) {
   
-    _homestatus = status;
-   
-    notifyListeners();
-  }
 
-
+  //for changing the tab bar selected button
   void changeSelectedIndex(int index) {
     _selectedIndex = index;
     notifyListeners();
@@ -81,13 +76,14 @@ class HomeViewModel extends ChangeNotifier{
         if (assetEntity != null) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Downloading successfull'),));
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Downloading successfull'),));
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Downloading failed'),));
         }
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Downloading successfull'),));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Downloading failed'),));
       }
     } catch (e) {
       print("Error: $e");
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Downloading failed'),));
     }
   }
 }
