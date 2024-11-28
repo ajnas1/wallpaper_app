@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:wallpaper/model/unsplash_model.dart';
 import 'package:wallpaper/utilities/colors.dart';
 import 'package:wallpaper/utilities/constants.dart';
 import 'package:wallpaper/viewmodel/home_view_model.dart';
@@ -115,6 +116,7 @@ class Home extends StatelessWidget {
                                 ],
                               );
                             } else if (value.homeStatus == HomeStatus.loaded) {
+                              List<UnSplashModel>? reversedImages = snapshot.data!.reversed.toList();
                               return Container(
                                   padding: const EdgeInsets.only(
                                       left: 10, right: 10),
@@ -128,7 +130,7 @@ class Home extends StatelessWidget {
                                     mainAxisSpacing: 8,
                                     crossAxisSpacing: 8,
                                     itemBuilder: (context, index) {
-                                      final image = snapshot.data![index];
+                                      final image = reversedImages[index];
                                       return GestureDetector(
                                         onTap: (){
                                           value.download(image.urls.raw,context);
