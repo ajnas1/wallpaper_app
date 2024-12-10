@@ -9,18 +9,18 @@ List<UnSplashModel> unSplashModelFromJson(String str) => List<UnSplashModel>.fro
 String unSplashModelToJson(List<UnSplashModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class UnSplashModel {
-    String id;
-    String slug;
+    dynamic id;
+    dynamic slug;
     AlternativeSlugs alternativeSlugs;
     DateTime createdAt;
     DateTime updatedAt;
     dynamic promotedAt;
     int width;
     int height;
-    String color;
-    String blurHash;
-    String? description;
-    String altDescription;
+    dynamic color;
+    dynamic blurHash;
+    dynamic description;
+    dynamic altDescription;
     List<dynamic> breadcrumbs;
     Urls urls;
     UnSplashModelLinks links;
@@ -57,7 +57,22 @@ class UnSplashModel {
         required this.user,
     });
 
-    factory UnSplashModel.fromJson(Map<String, dynamic> json) => UnSplashModel(
+    factory UnSplashModel.fromJson(Map<String, dynamic> json) {
+      print(json["id"]);
+      print;(json["slug"]);
+      print(DateTime.parse(json["created_at"]));
+      print(DateTime.parse(json["updated_at"]));
+      print(json["promoted_at"]);
+      print(json["width"]);
+      print(json["height"]);
+      print(json["color"]);
+      print(json["blur_hash"]);
+      print(json["description"]);
+      print( json["alt_description"]);
+      print(json["likes"]);
+      print(json["liked_by_user"]);
+      print(json["user"]);
+      return UnSplashModel(
         id: json["id"],
         slug: json["slug"],
         alternativeSlugs: AlternativeSlugs.fromJson(json["alternative_slugs"]),
@@ -81,6 +96,7 @@ class UnSplashModel {
         assetType: assetTypeValues.map[json["asset_type"]]!,
         user: User.fromJson(json["user"]),
     );
+    }
 
     Map<String, dynamic> toJson() => {
         "id": id,
@@ -109,14 +125,14 @@ class UnSplashModel {
 }
 
 class AlternativeSlugs {
-    String en;
-    String es;
-    String ja;
-    String fr;
-    String it;
-    String ko;
-    String de;
-    String pt;
+    dynamic en;
+    dynamic es;
+    dynamic ja;
+    dynamic fr;
+    dynamic it;
+    dynamic ko;
+    dynamic de;
+    dynamic pt;
 
     AlternativeSlugs({
         required this.en,
@@ -161,10 +177,10 @@ final assetTypeValues = EnumValues({
 });
 
 class UnSplashModelLinks {
-    String self;
-    String html;
-    String download;
-    String downloadLocation;
+    dynamic self;
+    dynamic html;
+    dynamic download;
+    dynamic downloadLocation;
 
     UnSplashModelLinks({
         required this.self,
@@ -189,9 +205,9 @@ class UnSplashModelLinks {
 }
 
 class Sponsorship {
-    List<String> impressionUrls;
-    String tagline;
-    String taglineUrl;
+    List<dynamic> impressionUrls;
+    dynamic tagline;
+    dynamic taglineUrl;
     User sponsor;
 
     Sponsorship({
@@ -217,19 +233,19 @@ class Sponsorship {
 }
 
 class User {
-    String id;
+    dynamic id;
     DateTime updatedAt;
-    String username;
-    String name;
-    String firstName;
-    String lastName;
-    String? twitterUsername;
-    String? portfolioUrl;
-    String bio;
-    String? location;
+    dynamic username;
+    dynamic name;
+    dynamic firstName;
+    dynamic lastName;
+    dynamic? twitterUsername;
+    dynamic? portfolioUrl;
+    dynamic bio;
+    dynamic? location;
     UserLinks links;
     ProfileImage profileImage;
-    String? instagramUsername;
+    dynamic? instagramUsername;
     int totalCollections;
     int totalLikes;
     int totalPhotos;
@@ -317,13 +333,13 @@ class User {
 }
 
 class UserLinks {
-    String self;
-    String html;
-    String photos;
-    String likes;
-    String portfolio;
-    String following;
-    String followers;
+    dynamic self;
+    dynamic html;
+    dynamic photos;
+    dynamic likes;
+    dynamic portfolio;
+    dynamic following;
+    dynamic followers;
 
     UserLinks({
         required this.self,
@@ -357,9 +373,9 @@ class UserLinks {
 }
 
 class ProfileImage {
-    String small;
-    String medium;
-    String large;
+    dynamic small;
+    dynamic medium;
+    dynamic large;
 
     ProfileImage({
         required this.small,
@@ -381,9 +397,9 @@ class ProfileImage {
 }
 
 class Social {
-    String? instagramUsername;
-    String? portfolioUrl;
-    String? twitterUsername;
+    dynamic? instagramUsername;
+    dynamic? portfolioUrl;
+    dynamic? twitterUsername;
     dynamic paypalEmail;
 
     Social({
@@ -433,7 +449,7 @@ class TopicSubmissions {
 }
 
 class Animals {
-    String status;
+    dynamic status;
     DateTime approvedOn;
 
     Animals({
@@ -453,7 +469,7 @@ class Animals {
 }
 
 class Nature {
-    String status;
+    dynamic status;
 
     Nature({
         required this.status,
@@ -469,12 +485,12 @@ class Nature {
 }
 
 class Urls {
-    String raw;
-    String full;
-    String regular;
-    String small;
-    String thumb;
-    String smallS3;
+    dynamic raw;
+    dynamic full;
+    dynamic regular;
+    dynamic small;
+    dynamic thumb;
+    dynamic smallS3;
 
     Urls({
         required this.raw,
